@@ -3,6 +3,34 @@ Upcoming
 
 Features:
 ---------
+* Add a ``\service`` prompt token for connections made using ``service=...``
+  or ``PGSERVICE``. For example, set ``prompt = '\service> '``.
+
+Bug fixes:
+----------
+* Fix completion crashing with ``TypeError: 'NoneType' object is not iterable``
+  for set-returning functions whose parameters or ``TABLE(...)`` output
+  columns have no names (e.g. an unnamed ``VARIADIC`` parameter). Such
+  functions now offer the function name as their column, like functions
+  without output parameters.
+
+4.7.1 (2026-09-20)
+==================
+
+Bug fixes:
+----------
+* Fix wrong version number that was shown in `pgcli --version` for
+  version 4.7.0.
+
+
+4.7.0 (2026-09-19)
+==================
+
+**Brown bag release:** this version shows (in `pgcli --version`) as
+"4.6.0" instead of "4.7.0".
+
+Features:
+---------
 * Add support for `single-command` to run a SQL command and exit.
     * Command line option `-c` or `--command`.
     * You can specify multiple times.
@@ -39,11 +67,6 @@ Bug fixes:
   ``sslmode``, everything) and silently fell back to a local socket connection
   as the OS user. The database argument is now kept, like psql; only when no
   database is given at all does the listing connect to ``postgres``.
-* Fix completion crashing with ``TypeError: 'NoneType' object is not iterable``
-  for set-returning functions whose parameters or ``TABLE(...)`` output
-  columns have no names (e.g. an unnamed ``VARIADIC`` parameter). Such
-  functions now offer the function name as their column, like functions
-  without output parameters.
 
 4.6.0 (2026-08-26)
 ==================
